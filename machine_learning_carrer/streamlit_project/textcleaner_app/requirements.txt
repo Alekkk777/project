@@ -1,0 +1,7 @@
+streamlit==0.79.0
+matplotlib==3.3.4
+wordcloud==1.8.1
+seaborn==0.11.1
+pandas==1.1.5
+spacy==3.0.5
+neattext==0.1.0

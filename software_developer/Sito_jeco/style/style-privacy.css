@@ -1,0 +1,264 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif; /* Applica Montserrat a tutti gli elementi */
+}
+
+body {
+  font-family: 'Montserrat', sans-serif; /* Specifica la famiglia di font per il body */
+  margin: 0;
+  height: 100%;
+}
+
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 30px;
+  
+}
+
+h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 40px; /* Dimensione aggiornata per h2 */
+}
+
+h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 30px; /* Dimensione aggiornata per h3 */
+}
+
+h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 25px; /* Dimensione aggiornata per h4 */
+}
+
+p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 22px; /* Dimensione aggiornata per p */
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 1rem;
+}
+  
+.logo img {
+  height: 80px;
+  max-width: 100%; /* Assicurati che il logo non superi la larghezza del contenitore */
+  display: block; /* Per evitare problemi di spaziatura extra */
+}
+  
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+  
+.nav-links li a {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold; /* Rendi il testo in grassetto */
+  text-decoration: none;
+  color: #333;
+  padding: 0 1rem;
+  transition: color 0.3s ease;
+  margin: 10px 40px;
+}
+  
+.nav-links li a:hover {
+  color: #A5191E;
+}
+  
+.burger {
+  display: none;
+  cursor: pointer;
+}
+  
+.burger div {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  margin: 5px;
+  transition: all 0.3s ease;
+}
+/* Aggiungi un'icona 'X' per chiudere il menu */
+.close-icon {
+  font-size: 2rem; /* Aumenta la dimensione se necessario */
+  position: absolute;
+  top: 1.2rem;
+  right: 1.5rem;
+  display: none;
+  cursor: pointer;
+  z-index: 100; /* Assicurati che sia sopra il menu */
+  
+}
+
+/* Modifica le dimensioni del carattere per le voci di menu */
+.nav-links li a {
+  font-size: 1.5rem; /* Aggiusta la dimensione del font come preferisci */
+  padding: 1rem 0; /* Aggiungi spazio sopra e sotto ogni voce di menu */
+}
+
+/*RESPONSIVE*/
+@media screen and (max-width: 768px) {
+  /*MENU RESPONSIVE*/
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: white;
+    z-index: 10;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in;
+  }
+
+  .nav-links li {
+    opacity: 0;
+    transition: opacity 0.5s ease 0.5s;
+    margin: 20px 0px;
+  }
+
+  .burger {
+    display: block;
+  }
+  .nav-active .close-icon {
+    display: block; /* Mostra l'icona 'X' quando il menu è aperto */
+  }
+  .burger.toggle .line1,
+.burger.toggle .line2,
+.burger.toggle .line3 {
+  background-color: #fff; /* Cambia il colore delle linee se necessario */
+  }
+  .split-section {
+    flex-direction: column; /* Impila le colonne verticalmente su schermi piccoli */
+}
+    .footer-content {
+    flex-direction: column;
+  }
+
+  .footer-logo, .contact-item img, .social-icons img {
+    justify-content: center;
+    margin-top: 20px; /* Spazio sopra il logo */
+    max-width: 100px;
+    justify-content: center;
+  }
+}
+
+/*HAMBURGER MENU*/
+/* Classe aggiunta da JavaScript quando il menu hamburger è cliccato */
+.nav-active {
+  display: flex;
+  transform: translateX(0);
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-active li {
+  opacity: 1;
+}
+
+/* Stili aggiunti per l'animazione del burger quando è attivo */
+.toggle .line1 {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.toggle .line2 {
+  opacity: 0;
+}
+
+.toggle .line3 {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+/*FOOTER*/
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  background: #fff; /* O il colore di sfondo che preferisci */
+  margin-top: 20px;
+  box-shadow: 0 -8px 8px -8px rgba(0, 0, 0, 0.3); /* Aggiunge un'ombra in alto */
+}
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap; /* Permette agli elementi di andare a capo su schermi più piccoli */
+}
+
+.contact-info {
+  flex: 1;
+  padding: 10px;
+}
+.contact-info h3{
+  text-align: left;
+  padding-bottom: 20px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.contact-item img[src="../picture/mail.jpg"] {
+  width: 60px; /* O qualsiasi altra dimensione desiderata per l'icona della mail */
+  height: auto;
+}
+
+.footer-logo {
+  flex: 1;
+  padding: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.footer-logo img {
+  max-width: 160px; /* Imposta la larghezza massima del logo */
+  height: auto;
+}
+
+.social-media {
+  width: 100%;
+  margin-top: 20px; /* Spazio sopra la sezione social */
+}
+
+
+.social-icons a {
+  margin: 0 5px;
+}
+
+.social-icons img {
+  width: 90px; /* O la dimensione che preferisci */
+  height: auto;
+  padding: 15px;
+}
+/* Seleziona l'icona della mail attraverso la classe 'contact-item' e l'attributo 'src' se necessario */
+.contact-item img[src="icon-email.png"] {
+  width: 20px; /* Imposta una larghezza minore */
+  height: auto; /* Mantiene le proporzioni */
+}
+
+
+/*tutto il testo*/
+.contenitore{
+  justify-content: center; /* Centra gli elementi orizzontalmente */
+  align-items: center; /* Centra gli elementi verticalmente */
+}
+.contenitore h1{
+  text-align: center;
+}
+.contenitore p{
+  margin: 60px 60px; /* Aggiunge margine solo sotto il paragrafo */
+  line-height: 1.6; /* Aumenta l'altezza della riga del testo */
+  letter-spacing: 0.5px; /* Aumenta lo spazio tra le lettere */
+}

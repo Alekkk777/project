@@ -1,0 +1,392 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif; /* Applica Montserrat a tutti gli elementi */
+}
+
+body {
+  font-family: 'Montserrat', sans-serif; /* Specifica la famiglia di font per il body */
+  margin: 0;
+  height: 100%;
+}
+
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 30px;
+}
+
+h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 40px; /* Dimensione aggiornata per h2 */
+}
+
+h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 30px; /* Dimensione aggiornata per h3 */
+}
+
+h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 25px; /* Dimensione aggiornata per h4 */
+}
+
+p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 22px; /* Dimensione aggiornata per p */
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 1rem;
+}
+  
+.logo img {
+  height: 80px;
+  max-width: 100%; /* Assicurati che il logo non superi la larghezza del contenitore */
+  display: block; /* Per evitare problemi di spaziatura extra */
+}
+  
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+  
+.nav-links li a {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold; /* Rendi il testo in grassetto */
+  text-decoration: none;
+  color: #333;
+  padding: 0 1rem;
+  transition: color 0.3s ease;
+  margin: 10px 40px;
+}
+  
+.nav-links li a:hover {
+  color: #A5191E;
+}
+  
+.burger {
+  display: none;
+  cursor: pointer;
+}
+  
+.burger div {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  margin: 5px;
+  transition: all 0.3s ease;
+}
+/* Aggiungi un'icona 'X' per chiudere il menu */
+.close-icon {
+  font-size: 2rem; /* Aumenta la dimensione se necessario */
+  position: absolute;
+  top: 1.2rem;
+  right: 1.5rem;
+  display: none;
+  cursor: pointer;
+  z-index: 100; /* Assicurati che sia sopra il menu */
+  
+}
+
+/* Modifica le dimensioni del carattere per le voci di menu */
+.nav-links li a {
+  font-size: 1.5rem; /* Aggiusta la dimensione del font come preferisci */
+  padding: 1rem 0; /* Aggiungi spazio sopra e sotto ogni voce di menu */
+}
+
+/*RESPONSIVE*/
+@media screen and (max-width: 768px) {
+  /*MENU RESPONSIVE*/
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: white;
+    z-index: 10;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in;
+  }
+
+  .nav-links li {
+    opacity: 0;
+    transition: opacity 0.5s ease 0.5s;
+    margin: 20px 0px;
+  }
+
+  .burger {
+    display: block;
+  }
+  .nav-active .close-icon {
+    display: block; /* Mostra l'icona 'X' quando il menu è aperto */
+  }
+  .burger.toggle .line1,
+.burger.toggle .line2,
+.burger.toggle .line3 {
+  background-color: #fff; /* Cambia il colore delle linee se necessario */
+  }
+  .split-section {
+    flex-direction: column; /* Impila le colonne verticalmente su schermi piccoli */
+}
+    .footer-content {
+    flex-direction: column;
+  }
+
+  .footer-logo, .contact-item img, .social-icons img {
+    justify-content: center;
+    margin-top: 20px; /* Spazio sopra il logo */
+    max-width: 100px;
+    justify-content: center;
+  }
+}
+
+/*HAMBURGER MENU*/
+/* Classe aggiunta da JavaScript quando il menu hamburger è cliccato */
+.nav-active {
+  display: flex;
+  transform: translateX(0);
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-active li {
+  opacity: 1;
+}
+
+/* Stili aggiunti per l'animazione del burger quando è attivo */
+.toggle .line1 {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.toggle .line2 {
+  opacity: 0;
+}
+
+.toggle .line3 {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/*HERO SECTION*/
+.hero-image {
+    /* Sostituisci 'url_of_your_image.jpg' con il percorso reale dell'immagine */
+    background-image: url('../picture/Junior-Enterprise-Consulting-Pavia.jpg');
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    height: 70vh; /* Esempio per rendere l'immagine alta la metà del viewport */
+}
+  
+.hero-text {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+  
+.hero-text h1 {
+    font-size: 70px; /* o la dimensione desiderata */
+    font-weight: bold;
+    text-shadow: 2px 2px 6px grey;
+}
+  
+.hero-text p {
+    font-size: 20px; /* o la dimensione desiderata */
+}
+/*AFTER HERO*/
+.after-hero {
+    text-align: center; /* Centra il testo */
+    max-width: 800px; /* Ad esempio, per una larghezza massima */
+    margin: auto; /* Centra la div stessa */
+    padding: 20px; /* Aggiunge spazio intorno al contenuto */
+}
+  
+.after-hero p {
+    margin:40px 40px; /* Aggiunge spazio sotto ogni paragrafo */
+}
+/*BARRA CONTINUA STRIPE*/
+
+.stripe {
+    background-color: #0A404D; /* Sostituisci con il codice colore esatto della tua striscia verde */
+    padding: 20px; /* o quanto preferisci */
+    text-align: center; /* Centra il testo nella striscia */
+}
+  
+.stripe h2 {
+    color: white; /* o il colore che preferisci per il testo */
+    margin: 0; /* Rimuovi il margine di default */
+}
+/**/
+.servizi-section {
+    padding: 20px; /* Aggiunge spazio intorno al contenuto della sezione */
+    margin: 40px 20px;
+}
+
+.servizi-section-title {
+    text-align: left; /* Allinea il titolo a sinistra */
+    margin-top: 0; /* Rimuove il margine superiore per allinearlo in alto */
+    margin-bottom: 10px; /* Spazio tra il titolo e il paragrafo */
+    color: #A5191E;
+}
+
+.servizi-section-paragraph {
+    text-align: justify; /* Giustifica il testo del paragrafo per occupare tutta la larghezza */
+}
+/**/
+.forza-element {
+    display: flex; /* Imposta il layout Flexbox */
+    align-items: center; /* Allinea verticalmente gli elementi al centro */
+    justify-content: start; /* Allinea gli elementi all'inizio del contenitore */
+    gap: 20px; /* Aggiunge spazio tra il titolo e il paragrafo */
+    padding: 0px 20px ;
+}
+.forza-element h4{
+    text-transform: uppercase;
+    margin: 10px 0px;
+}
+.forza-section h3{
+    padding: 20px 0px ; 
+}
+
+/*FOOTER*/
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  background: #fff; /* O il colore di sfondo che preferisci */
+  margin-top: 20px;
+  box-shadow: 0 -8px 8px -8px rgba(0, 0, 0, 0.3); /* Aggiunge un'ombra in alto */
+}
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap; /* Permette agli elementi di andare a capo su schermi più piccoli */
+}
+
+.contact-info {
+  flex: 1;
+  padding: 10px;
+}
+.contact-info h3{
+  text-align: left;
+  padding-bottom: 20px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.contact-item img[src="../picture/mail.jpg"] {
+  width: 60px; /* O qualsiasi altra dimensione desiderata per l'icona della mail */
+  height: auto;
+}
+
+.footer-logo {
+  flex: 1;
+  padding: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.footer-logo img {
+  max-width: 160px; /* Imposta la larghezza massima del logo */
+  height: auto;
+}
+
+.social-media {
+  width: 100%;
+  margin-top: 20px; /* Spazio sopra la sezione social */
+}
+
+
+.social-icons a {
+  margin: 0 5px;
+}
+
+.social-icons img {
+  width: 90px; /* O la dimensione che preferisci */
+  height: auto;
+  padding: 15px;
+}
+/* Seleziona l'icona della mail attraverso la classe 'contact-item' e l'attributo 'src' se necessario */
+.contact-item img[src="icon-email.png"] {
+  width: 20px; /* Imposta una larghezza minore */
+  height: auto; /* Mantiene le proporzioni */
+}
+
+/*COOKIE BANNER*/
+.cookie-banner {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #0A404D; /* Colore di sfondo del banner */
+  color: white; /* Colore del testo */
+  padding: 20px 10px; /* Padding per dare spazio intorno al contenuto */
+  display: flex; /* Utilizziamo flexbox per allineare gli elementi */
+  justify-content: center; /* Centra gli elementi orizzontalmente */
+  align-items: center; /* Centra gli elementi verticalmente */
+  flex-direction: column; /* Imposta gli elementi in colonna anziché in riga */
+}
+
+.cookie-content p {
+  text-align: center; /* Centra il testo */
+  margin: 0 0 20px; /* Aggiunge margine solo sotto il paragrafo */
+  font-size: 16px; /* Dimensione del testo */
+}
+
+.cookie-buttons {
+  display: flex; /* Utilizziamo flexbox per allineare i bottoni */
+  justify-content: center; /* Centra i bottoni orizzontalmente */
+  gap: 10px; /* Distanza tra i bottoni */
+}
+
+.cookie-banner button {
+  padding: 10px 20px; /* Padding interno per i bottoni */
+  background-color: #cc0000; /* Colore di sfondo dei bottoni */
+  border: none; /* Nessun bordo per i bottoni */
+  color: white; /* Colore del testo per i bottoni */
+  cursor: pointer; /* Cursor a mano per indicare un'azione cliccabile */
+  font-weight: bold; /* Rende il testo dei bottoni in grassetto */
+}
+
+.cookie-banner button.close-cookie-banner {
+  position: absolute; /* Posiziona il bottone di chiusura rispetto al banner */
+  right: 10px; /* Distanza dal lato destro del banner */
+  top: 10px; /* Distanza dal lato superiore del banner */
+  background-color: transparent; /* Sfondo trasparente per il bottone di chiusura */
+  color: white; /* Colore del testo per il bottone di chiusura */
+  border: none; /* Nessun bordo per il bottone di chiusura */
+  font-size: 24px; /* Dimensione del testo per il bottone di chiusura */
+}
+
+.cookie-banner a {
+  color: #99ccff; /* Colore per il link della privacy policy */
+  text-decoration: underline; /* Sottolinea il link */
+}
+.cookie-banner-hidden {
+    position: fixed;
+    left: -100%; /* Sposta il banner a sinistra, fuori dallo schermo */
+    top: 0;
+    visibility: hidden; /* Rende il banner invisibile */
+}
+

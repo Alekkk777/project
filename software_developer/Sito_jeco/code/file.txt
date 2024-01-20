@@ -1,0 +1,7 @@
+rosso: #A5191E
+verde: #0A404D
+h1:
+h2: 40px
+h3: 30px
+h4: 25px
+p: 22px
