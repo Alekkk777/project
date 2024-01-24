@@ -62,7 +62,7 @@ def main():
                     st.write(my_summary)
                     st.info("Rouge Score")
                     eval_score, eval_df = evaluate_summary(my_summary, raw_text)
-                    st.dataframe(eval_df)
+                    st.dataframe(eval_df.T)
                     eval_df['metrics'] = eval_df.index
                     c = alt.Chart(eval_df).mark_bar().encode(x='metrics', y='rouge-1')
                     st.altair_chart(c)
