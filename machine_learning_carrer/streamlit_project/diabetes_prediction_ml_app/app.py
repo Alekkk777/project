@@ -18,6 +18,7 @@ def main():
 	choice = st.sidebar.selectbox("Menu",menu)
 
 	if choice == "Home":
+
 		st.subheader("Home")
 		st.write("""
 			### Early Stage Diabetes Risk Predictor App
