@@ -1,0 +1,85 @@
+STUDIO
+1. Pulizia e Preparazione dei Dati
+Gestione dei Valori Mancanti: Decidi come gestire i valori mancanti. Potresti scegliere di imputarli (ad esempio, usando la media o la mediana per i dati numerici, o la moda per i dati categorici), eliminarli (se non sono molti), o anche utilizzare algoritmi che possono gestire i valori mancanti.
+Eliminazione delle Colonne Non Necessarie: Se ci sono colonne che non contribuiranno alla modellazione (come identificatori unici non correlati al target), considera di eliminarle.
+2. Esplorazione dei Dati
+Analisi Statistica: Utilizza metodi di analisi statistica per avere un'idea della distribuzione dei tuoi dati, delle correlazioni tra le variabili e di eventuali outlier.
+Visualizzazione dei Dati: Le visualizzazioni possono aiutarti a capire meglio i tuoi dati. Grafici come istogrammi, scatter plots e box plots sono utili per esplorare le relazioni tra le variabili e identificare anomalie.
+3. Feature Engineering
+Codifica delle Variabili Categoriche: Le variabili categoriche dovrebbero essere convertite in formati numerici attraverso tecniche come la one-hot encoding o la label encoding, a seconda del modello che prevedi di utilizzare.
+Normalizzazione/Standardizzazione: Per assicurarti che le variabili numeriche siano su scale comparabili, potresti doverle normalizzare o standardizzare, specialmente se utilizzi algoritmi sensibili alla scala dei dati come la regressione logistica, SVM o reti neurali.
+4. Selezione del Modello
+Scegliere un Modello di Partenza: Basandoti sul problema (classificazione, regressione, ecc.), scegli un modello semplice come punto di partenza. La regressione logistica, gli alberi decisionali o i modelli lineari possono essere buone scelte iniziali.
+Valutazione e Ottimizzazione: Valuta le prestazioni del tuo modello utilizzando metriche appropriate. Considera l'uso della convalida incrociata per una stima più affidabile delle prestazioni. In base ai risultati, potresti dover ottimizzare i parametri del modello.
+5. Iterazione e Valutazione
+Esperimenta con Diversi Modelli: Non fermarti al primo modello che testi. Prova diversi algoritmi e confronta le loro prestazioni.
+Feature Selection: Utilizza tecniche di feature selection per ridurre la dimensionalità dei tuoi dati e migliorare le prestazioni del modello.
+6. Fine-tuning e Valutazione Finale
+Dopo aver selezionato il modello migliore, fai un fine-tuning dei suoi parametri per massimizzare le prestazioni. Valuta il modello sul set di test per avere un'idea di come si comporterà su dati non visti.
+
+
+
+
+- sfid: Identificatore unico per ciascuna osservazione. Tipicamente, in contesti di dati finanziari o clienti, rappresenta un identificativo specifico per transazione o cliente.
+- dt_rif: Data di riferimento. Potrebbe indicare la data in cui i dati sono stati raccolti o l'ultimo aggiornamento del record.
+- juridical_form: Forma giuridica dell'entità. Questa variabile categorica descrive il tipo di forma legale sotto la quale opera l'azienda o l'entità (ad es., società per azioni, ditta individuale).
+- dossier_type: Tipo di dossier. Potrebbe riferirsi alla categoria o al tipo di richiesta, dossier finanziario o documentazione associata all'entità.
+- application_source: Sorgente dell'applicazione. Indica da dove proviene l'applicazione o la richiesta, ad esempio da un sito web, un referente interno, ecc.
+- credimi_industry: Settore di industria secondo la classificazione di Credimi. Categorizza le aziende in base al loro settore operativo principale.
+- region: Regione geografica. Indica la regione in cui opera o si trova l'entità.
+- zone: Zona geografica più specifica all'interno della regione.
+- revenues: Entrate. Indica il livello di entrate generate dall'entità in un determinato periodo.
+- pfn_ebitda: Rapporto PFN/EBITDA, un indicatore finanziario che misura il rapporto tra Posizione Finanziaria Netta e l'EBITDA.
+- pn: Posizione Netta. Un indicatore finanziario che potrebbe riferirsi alla posizione finanziaria netta dell'entità.
+- ebitda: EBITDA (Earnings Before Interest, Taxes, Depreciation, and Amortization). Un indicatore di performance finanziaria che misura i profitti prima degli interessi, delle tasse, del deprezzamento e dell'ammortamento.
+- target: Variabile target per la modellazione. Potrebbe rappresentare una classificazione o un esito specifico da prevedere.
+- score_accounting: Punteggio contabile. Valutazione basata su metriche finanziarie e contabili.
+- score_identity: Punteggio di identità. Potrebbe valutare l'autenticità o la solidità dell'identità di un'entità.
+- score_trend: Punteggio di trend. Valuta le tendenze di performance o di mercato associate all'entità.
+- slope_ebit, slope_fondi, slope_ebitda, slope_fatturato, slope_liquidita, ecc.: Queste variabili rappresentano le pendenze (o variazioni nel tempo) di vari indicatori finanziari, che possono indicare la direzione e la velocità delle variazioni finanziarie dell'entità.
+- gender: Genere. Potrebbe riferirsi al genere del titolare o del principale decision-maker dell'entità.
+
+SCELTE
+Distribuzione dei Dati: Tutte e quattro le variabili sembrano avere distribuzioni con code lunghe verso destra, indicate dalla presenza di valori estremamente alti che si estendono lontano dalla maggior parte dei dati. Questo è evidente sia negli istogrammi che nei boxplot.
+Outliers: I boxplot mostrano un numero significativo di outliers per tutte e quattro le variabili. Questi outliers sono rappresentati dai punti che cadono al di fuori dei "whiskers" dei boxplot.
+Skewness: I dati mostrano una forte asimmetria positiva (skewness a destra), dove la maggior parte dei dati è raggruppata verso l'estremità inferiore della scala e ci sono valori estremamente alti che si discostano dalla media.
+Valutazioni e Consigli
+Trasformazione dei Dati: Potresti considerare di applicare una trasformazione ai dati per ridurre l'asimmetria e rendere la distribuzione più normale, specialmente se hai in programma di utilizzare algoritmi che assumono una distribuzione normale dei dati. Trasformazioni comuni includono logaritmo, radice quadrata o Box-Cox.
+Gestione degli Outliers: Gli outliers possono influenzare la performance di molti modelli di machine learning. Puoi gestirli in diversi modi, come ad esempio rimuovendoli, applicando tecniche di capping (impostando un limite superiore), o trattandoli separatamente nel tuo modello di analisi.
+Imputazione con Cautela: La presenza di outliers suggerisce che dovresti essere cauto nel scegliere come imputare i valori mancanti. Ad esempio, l'imputazione con la media potrebbe non essere appropriata, poiché gli outliers potrebbero distorcere la media. La mediana potrebbe essere una scelta migliore in questo caso.
+Analisi ulteriore: Se questi outliers rappresentano errori di inserimento, potrebbero dover essere corretti o rimossi. Se rappresentano variazioni valide all'interno dei dati, potrebbe essere utile capire il contesto di questi valori estremi, poiché potrebbero contenere informazioni preziose per l'analisi.
+1. Analisi dei Dati Mancanti
+Prima di decidere come gestire i dati mancanti, è utile capire perché mancano. Se i dati mancano completamente a caso, le tecniche di imputazione sono generalmente adeguate. Tuttavia, se la mancanza di dati è sistematica, potrebbe essere necessario considerare strategie diverse o addirittura riconsiderare l'utilizzo di determinate variabili per la modellazione.
+1. Eliminazione delle Righe o Colonne
+Righe: Se il tuo dataset è grande e solo una piccola percentuale di righe ha valori mancanti, potresti semplicemente eliminare quelle righe.
+Colonne: Se una colonna ha una grande percentuale di valori mancanti e non è cruciale per la tua analisi o modellazione, considera di eliminarla.
+2. Imputazione
+Media, Mediana, Moda: Per i dati numerici, puoi imputare i valori mancanti con la media o la mediana della colonna. Per i dati categorici, la moda (il valore più frequente) è spesso usata.
+Algoritmi di Imputazione Più Avanzati: Metodi come l'imputazione multivariata o l'uso di algoritmi di machine learning (es. k-NN, regressione lineare, alberi decisionali) per prevedere e sostituire i valori mancanti.
+3. Assegnazione di una Categoria Specifica
+Per i dati categorici, puoi considerare i valori mancanti come una categoria a sé, assegnando loro un'etichetta specifica come "Sconosciuto" o "Non applicabile". Questo può essere particolarmente utile se la mancanza di un dato è informativa di per sé.
+
+
+
+Cardinalità delle Variabili Categoriche
+sfid: Con 7520 valori unici, questa variabile è un identificatore unico per ciascuna osservazione. Di solito, gli identificatori unici non sono utili per la modellazione, quindi potresti considerare di rimuoverlo.
+dt_rif: Con 622 valori unici, questa variabile ha una cardinalità relativamente alta, il che potrebbe complicare l'uso diretto in modelli di machine learning senza una previa trasformazione o feature engineering (ad esempio, estrarre anno, mese, giorno della settimana, ecc.).
+Le altre variabili categoriche hanno una cardinalità gestibile, il che indica che potrebbero essere facilmente trasformate in feature numeriche attraverso tecniche come la one-hot encoding o la label encoding senza aumentare eccessivamente la dimensionalità del dataset.
+Variabili con Bassa Varianza
+Non hai trovato variabili con bassa varianza nel tuo dataset. Questo significa che, almeno secondo la soglia arbitraria che abbiamo considerato, tutte le variabili numeriche presentano una certa variazione che potrebbe essere rilevante per la modellazione.
+Coppie di Variabili Fortemente Correlate
+Hai identificato una coppia di variabili fortemente correlate: slope_ebit e slope_ebitda, con un coefficiente di correlazione di circa 0.94. Questo indica una forte relazione lineare tra le due. In contesti di modellazione, mantenere entrambe le variabili potrebbe non aggiungere informazioni significative al modello e potrebbe portare a problemi di multicollinearità. Potresti considerare di rimuovere una delle due variabili o di combinare le informazioni di entrambe in un nuovo modo che possa essere più informativo per il modello.
+
+
+CONSIDERAZIONI
+Dai valori di correlazione che hai fornito, possiamo osservare alcuni interessanti insight riguardo la relazione tra le variabili del tuo dataset e la variabile target. Ecco alcune osservazioni:
+
+Correlazioni Positive: La variabile score_trend ha la correlazione positiva più elevata con il target, suggerendo che esiste una relazione lineare positiva tra questa variabile e il tuo target. Questo potrebbe indicare che valori più alti di score_trend tendono ad essere associati a valori più alti del target. Altre variabili con una correlazione positiva significativa includono application_source_D, dossier_type_D, e score_accounting.
+Correlazioni Negative: Alcune variabili, come juridical_form_DI, application_source_P, e dossier_type_L, mostrano una correlazione negativa con il target, indicando che valori più alti di queste variabili tendono ad essere associati a valori più bassi del target.
+Analisi del Dominio: Mentre i valori di correlazione possono suggerire quali variabili sono potenzialmente importanti per prevedere il target, è cruciale interpretare questi risultati nel contesto del dominio specifico del problema. La correlazione non implica causalità, e ulteriori analisi, come la costruzione di modelli predittivi e la verifica della loro validità attraverso la convalida incrociata, sono necessarie per determinare l'effettiva importanza e utilità di queste variabili.
+Feature Engineering: I risultati suggeriscono anche opportunità per il feature engineering. Ad esempio, potresti esplorare interazioni tra variabili che hanno mostrato correlazioni significative con il target, o potresti cercare di creare nuove variabili che catturino meglio le informazioni rilevanti per la previsione del target.
+Cautela nella Selezione delle Caratteristiche: Mentre le variabili con correlazioni forti sono candidate promettenti per la modellazione, è importante anche considerare la multicollinearità—la correlazione alta tra variabili predittive—che può influenzare negativamente le prestazioni del modello. Tecniche come la regressione ridge o lasso possono aiutare a mitigare questo problema riducendo l'impatto delle variabili correlate.
+
+
+
+Abbiamo deciso di utilizzare Modello lineare svc perché abbiamo meno di 10k dati e 
