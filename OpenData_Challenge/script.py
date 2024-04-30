@@ -6,6 +6,7 @@ from scipy.stats import yeojohnson
 from sklearn.svm import SVC
 import matplotlib.pyplot as plt
 import seaborn as sns
+
 # Caricamento dei dati di training
 train_data = pd.read_csv('./LWRS v2 data-set-file/train.csv', delimiter='|')
 
@@ -71,6 +72,7 @@ X_train = train_data.drop('target', axis=1)
 y_train = train_data['target']
 model = SVC(kernel='linear')
 model.fit(X_train, y_train)
+
 # Caricamento e preparazione del dataset di test
 test_data = pd.read_csv('./LWRS v2 data-set-file/test.csv', delimiter='|')
 test_data.drop(columns=columns_to_drop, inplace=True, errors='ignore')
@@ -88,8 +90,8 @@ X_test = test_data.drop('target', axis=1, errors='ignore')  # Se target non esis
 predictions = model.predict(X_test)
 
 test_data_load = pd.read_csv('./LWRS v2 data-set-file/test.csv', delimiter='|')
-# Salvataggio delle previsioni in un file CSV
-output = pd.DataFrame({'ID': test_data_load['sfid'], 'Prediction': predictions})
-output.to_csv('predictions.csv', index=False)
+# Salvataggio delle previsioni in un file CSV nel formato richiesto
+output = pd.DataFrame({'sfid|label': test_data_load['sfid'].astype(str) + '|' + predictions.astype(str)})
+output.to_csv('formatted_predictions.csv', index=False)
 
-print("Predizioni salvate nel file 'predictions.csv'.")
+print("Predizioni salvate nel file 'formatted_predictions.csv'.")
